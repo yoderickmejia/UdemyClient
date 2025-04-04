@@ -426,9 +426,8 @@ export default function Home() {
                   </Button>
                   <Button
                     asChild
-                    variant="outline"
                     size="lg"
-                    className="rounded-full h-12 px-6 sm:px-8 border-white text-violet-600 dark:text-white "
+                    className="rounded-full h-12 px-6 sm:px-8 bg-white text-violet-600 hover:bg-white/90 "
                   >
                     <Link href="#cursos">Explorar Cursos</Link>
                   </Button>

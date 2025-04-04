@@ -10,7 +10,6 @@ import {
   Bell,
   BookOpen,
   Calendar,
-  ChevronLeft,
   ChevronRight,
   Clock,
   Download,
@@ -42,7 +41,6 @@ export default function DashboardPage() {
   const { theme, setTheme } = useTheme()
   const [activeTab, setActiveTab] = useState("overview")
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
   const handleLogout = () => {
     // En una app real, manejarías la lógica de cierre de sesión aquí
@@ -53,39 +51,20 @@ export default function DashboardPage() {
     setTheme(theme === "dark" ? "light" : "dark")
   }
 
+  // Actualizar los datos de ejemplo para el curso unificado
+  // Reemplazar la constante availableCourses con esta versión actualizada:
+
   // Datos de ejemplo para cursos disponibles
   const availableCourses = [
     {
       id: 1,
-      title: "Elementos de Cohesión y Marcadores Textuales",
+      title: "Cohesión Textual y Figuras Literarias",
       progress: 0,
       lastLesson: "",
-      image: "/placeholder.svg?height=80&width=120&text=Cohesión+Textual",
+      image: "/placeholder.svg?height=80&width=120&text=Curso+Completo",
       nextLesson: "Elementos de cohesión textual",
       instructor: "Dra. María González",
-      totalLessons: 3,
-      completedLessons: 0,
-    },
-    {
-      id: 2,
-      title: "Referencias y Relaciones en el Texto",
-      progress: 0,
-      lastLesson: "",
-      image: "/placeholder.svg?height=80&width=120&text=Referencias+Textuales",
-      nextLesson: "Deícticos y sus tipos",
-      instructor: "Dr. Carlos Rodríguez",
-      totalLessons: 3,
-      completedLessons: 0,
-    },
-    {
-      id: 3,
-      title: "Estilo y Figuras Literarias",
-      progress: 0,
-      lastLesson: "",
-      image: "/placeholder.svg?height=80&width=120&text=Figuras+Literarias",
-      nextLesson: "Estilo: Directo, indirecto e indirecto libre",
-      instructor: "Dra. Ana Martínez",
-      totalLessons: 3,
+      totalLessons: 9,
       completedLessons: 0,
     },
   ]
@@ -116,7 +95,7 @@ export default function DashboardPage() {
     <div className="flex min-h-screen bg-slate-50 dark:bg-slate-900">
       {/* Sidebar */}
       <div
-        className={`${isMobileMenuOpen ? "block" : "hidden"} md:flex fixed inset-y-0 left-0 z-50 md:relative md:z-0 flex-col ${isSidebarOpen ? "w-64" : "w-20"} border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 transition-all duration-300`}
+        className={`${isMobileMenuOpen ? "block" : "hidden"} md:flex fixed inset-y-0 left-0 z-50 md:relative md:z-0 flex-col w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950`}
       >
         <div className="p-6">
           <div className="flex items-center gap-2">
@@ -131,56 +110,69 @@ export default function DashboardPage() {
           <Link href="/dashboard">
             <Button
               variant={activeTab === "overview" ? "default" : "ghost"}
-              className={`w-full justify-start gap-2 ${activeTab === "overview" ? "bg-violet-600 hover:bg-violet-700" : ""} ${!isSidebarOpen ? "px-0 justify-center" : ""}`}
+              className={`w-full justify-start gap-2 ${activeTab === "overview" ? "bg-violet-600 hover:bg-violet-700" : ""}`}
               onClick={() => setActiveTab("overview")}
             >
               <Home className="size-4" />
-              {isSidebarOpen && <span>Inicio</span>}
+              Inicio
             </Button>
           </Link>
 
           <Link href="/dashboard/cursos">
             <Button
               variant={activeTab === "courses" ? "default" : "ghost"}
-              className={`w-full justify-start gap-2 ${activeTab === "courses" ? "bg-violet-600 hover:bg-violet-700" : ""} ${!isSidebarOpen ? "px-0 justify-center" : ""}`}
+              className={`w-full justify-start gap-2 ${activeTab === "courses" ? "bg-violet-600 hover:bg-violet-700" : ""}`}
               onClick={() => setActiveTab("courses")}
             >
               <BookOpen className="size-4" />
-              {isSidebarOpen && <span>Mis Cursos</span>}
+              Mis Cursos
             </Button>
           </Link>
 
-      
+          <Link href="/dashboard/calendario">
+            <Button
+              variant={activeTab === "calendar" ? "default" : "ghost"}
+              className={`w-full justify-start gap-2 ${activeTab === "calendar" ? "bg-violet-600 hover:bg-violet-700" : ""}`}
+              onClick={() => setActiveTab("calendar")}
+            >
+              <Calendar className="size-4" />
+              Calendario
+            </Button>
+          </Link>
+
           <Link href="/dashboard/certificados">
             <Button
               variant={activeTab === "certificates" ? "default" : "ghost"}
-              className={`w-full justify-start gap-2 ${activeTab === "certificates" ? "bg-violet-600 hover:bg-violet-700" : ""} ${!isSidebarOpen ? "px-0 justify-center" : ""}`}
+              className={`w-full justify-start gap-2 ${activeTab === "certificates" ? "bg-violet-600 hover:bg-violet-700" : ""}`}
               onClick={() => setActiveTab("certificates")}
             >
               <GraduationCap className="size-4" />
-              {isSidebarOpen && <span>Certificados</span>}
+              Certificados
             </Button>
           </Link>
 
           <Link href="/dashboard/perfil">
             <Button
               variant={activeTab === "profile" ? "default" : "ghost"}
-              className={`w-full justify-start gap-2 ${activeTab === "profile" ? "bg-violet-600 hover:bg-violet-700" : ""} ${!isSidebarOpen ? "px-0 justify-center" : ""}`}
+              className={`w-full justify-start gap-2 ${activeTab === "profile" ? "bg-violet-600 hover:bg-violet-700" : ""}`}
               onClick={() => setActiveTab("profile")}
             >
               <User className="size-4" />
-              {isSidebarOpen && <span>Perfil</span>}
+              Perfil
             </Button>
           </Link>
 
-         
+          <Link href="/dashboard/configuracion">
+            <Button
+              variant={activeTab === "settings" ? "default" : "ghost"}
+              className={`w-full justify-start gap-2 ${activeTab === "settings" ? "bg-violet-600 hover:bg-violet-700" : ""}`}
+              onClick={() => setActiveTab("settings")}
+            >
+              <Settings className="size-4" />
+              Configuración
+            </Button>
+          </Link>
         </nav>
-
-        <div className="hidden md:flex justify-center p-2 border-t border-slate-200 dark:border-slate-800">
-          <Button variant="ghost" size="icon" onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="rounded-full">
-            {isSidebarOpen ? <ChevronLeft className="h-5 w-5" /> : <ChevronRight className="h-5 w-5" />}
-          </Button>
-        </div>
 
         <div className="p-4 border-t border-slate-200 dark:border-slate-800">
           <Button variant="outline" className="w-full justify-start gap-2" onClick={handleLogout}>
@@ -350,23 +342,25 @@ export default function DashboardPage() {
 
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {availableCourses.map((course) => (
-                <Card key={course.id} className="border-none shadow-md bg-white dark:bg-slate-950">
-                  <CardContent className="p-0">
+                <Card key={course.id} className="border-none shadow-md bg-white dark:bg-slate-950 flex flex-col">
+                  <CardContent className="p-0 flex flex-col h-full">
                     <div className="flex items-center p-4 gap-3">
-                      <Image
-                        src={course.image || "/placeholder.svg"}
-                        alt={course.title}
-                        width={80}
-                        height={80}
-                        className="rounded-md object-cover"
-                      />
+                      <div className="w-20 h-20 min-w-[5rem] overflow-hidden rounded-md">
+                        <Image
+                          src={course.image || "/placeholder.svg"}
+                          alt={course.title}
+                          width={80}
+                          height={80}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-bold text-base truncate">{course.title}</h3>
-                        <p className="text-sm text-slate-500 dark:text-slate-400">{course.instructor}</p>
+                        <p className="text-sm text-slate-500 dark:text-slate-400 truncate">{course.instructor}</p>
                       </div>
                     </div>
 
-                    <div className="px-4 pb-2">
+                    <div className="px-4 pb-2 flex-1">
                       <div className="flex justify-between text-sm mb-1">
                         <span>
                           {course.completedLessons} de {course.totalLessons} lecciones
@@ -376,9 +370,9 @@ export default function DashboardPage() {
                       <Progress value={course.progress} className="h-2" />
                     </div>
 
-                    <div className="p-4 border-t border-slate-100 dark:border-slate-800">
+                    <div className="p-4 border-t border-slate-100 dark:border-slate-800 mt-auto">
                       <div className="flex justify-between items-center">
-                        <div>
+                        <div className="max-w-[60%]">
                           <p className="text-xs text-slate-500 dark:text-slate-400">Primera lección</p>
                           <p className="text-sm font-medium truncate">{course.nextLesson}</p>
                         </div>
