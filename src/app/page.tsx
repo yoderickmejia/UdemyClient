@@ -17,6 +17,12 @@ import {
 // Importa el ThemeToggle al inicio del archivo
 import { ThemeToggle } from "@/components/theme-toggle";
 
+import foto from "@/app/assets/images.jpg";
+import foto1 from "@/app/assets/images.jpg";
+import avatar1 from "@/app/assets/avatar1.jpg";
+import avatar2 from "@/app/assets/avatar2.jpeg";
+import avatar3 from "@/app/assets/avatar3.jpg";
+
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-white dark:bg-slate-950">
@@ -114,7 +120,7 @@ export default function Home() {
                 <div className="absolute -inset-1 bg-gradient-to-br from-violet-100 to-indigo-100 rounded-2xl blur-xl opacity-70 dark:from-violet-900/30 dark:to-indigo-900/30 dark:opacity-50" />
                 <div className="relative bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-xl">
                   <Image
-                    src=".."
+                    src={foto}
                     alt="Estudiantes aprendiendo español"
                     width={800}
                     height={600}
@@ -192,135 +198,130 @@ export default function Home() {
 
         {/* Popular Courses */}
         <section className="py-16 sm:py-20" id="cursos">
-          <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16">
-              <div>
-                <Badge className="mb-4 bg-violet-100 text-violet-800 hover:bg-violet-100 dark:bg-violet-900 dark:text-violet-300">
-                  Cursos Populares
-                </Badge>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-                  Nuestros cursos más destacados
-                </h2>
-                <p className="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl">
-                  Explora nuestra selección de cursos diseñados para todos los
-                  niveles, desde principiantes hasta avanzados.
-                </p>
-              </div>
-              <Button
-                asChild
-                variant="outline"
-                className="mt-6 md:mt-0 w-full md:w-auto"
-              >
-                <Link href="#" className="gap-2">
-                  Ver todos los cursos
-                  <ArrowRight className="size-4" />
-                </Link>
-              </Button>
-            </div>
+  <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
+    <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16">
+      <div>
+        <Badge className="mb-4 bg-violet-100 text-violet-800 hover:bg-violet-100 dark:bg-violet-900 dark:text-violet-300">
+          Cursos Populares
+        </Badge>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
+          Nuestros cursos más destacados
+        </h2>
+        <p className="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl">
+          Explora nuestra selección de cursos diseñados para todos los niveles, desde principiantes hasta avanzados.
+        </p>
+      </div>
+      <Button
+        asChild
+        variant="outline"
+        className="mt-6 md:mt-0 w-full md:w-auto"
+      >
+        <Link href="/login" className="gap-2">
+          Ver todos los cursos
+          <ArrowRight className="size-4" />
+        </Link>
+      </Button>
+    </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {[
-                {
-                  title: "Español para Principiantes",
-                  level: "Básico",
-                  lessons: 42,
-                  hours: 12,
-                  rating: 4.9,
-                  reviews: 1240,
-                  price: "€49.99",
-                  image:
-                    "/placeholder.svg?height=200&width=400&text=Español+Básico",
-                },
-                {
-                  title: "Español Intermedio",
-                  level: "Intermedio",
-                  lessons: 56,
-                  hours: 18,
-                  rating: 4.8,
-                  reviews: 980,
-                  price: "€69.99",
-                  image:
-                    "/placeholder.svg?height=200&width=400&text=Español+Intermedio",
-                },
-                {
-                  title: "Español de Negocios",
-                  level: "Avanzado",
-                  lessons: 38,
-                  hours: 15,
-                  rating: 4.9,
-                  reviews: 750,
-                  price: "€79.99",
-                  image:
-                    "/placeholder.svg?height=200&width=400&text=Español+Negocios",
-                },
-              ].map((course, index) => (
-                <Card
-                  key={index}
-                  className="border-none shadow-md overflow-hidden bg-white dark:bg-slate-950"
-                >
-                  <div className="relative">
-                    <Image
-                      src={course.image || "/placeholder.svg"}
-                      alt={course.title}
-                      width={400}
-                      height={200}
-                      className="w-full h-48 object-cover"
-                    />
-                    <Badge className="absolute top-4 left-4 bg-white/90 text-violet-800 hover:bg-white/90 dark:bg-slate-900/90 dark:text-violet-300">
-                      {course.level}
-                    </Badge>
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-3">
-                      <h3 className="text-lg sm:text-xl font-bold">
-                        {course.title}
-                      </h3>
-                      <div className="text-base sm:text-lg font-bold text-violet-600">
-                        {course.price}
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-400 mb-4">
-                      <div className="flex items-center gap-1">
-                        <BookOpen className="size-4" />
-                        <span>{course.lessons} lecciones</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Users className="size-4" />
-                        <span>{course.hours} horas</span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-2 mb-4">
-                      <div className="flex">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`size-4 ${
-                              i < Math.floor(course.rating)
-                                ? "text-yellow-400 fill-yellow-400"
-                                : "text-slate-300"
-                            }`}
-                          />
-                        ))}
-                      </div>
-                      <span className="text-sm font-medium">
-                        {course.rating}
-                      </span>
-                      <span className="text-sm text-slate-600 dark:text-slate-400">
-                        ({course.reviews})
-                      </span>
-                    </div>
-
-                    <Button className="w-full rounded-full bg-violet-600 hover:bg-violet-700">
-                      Inscribirse
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 radius-2xl">
+      {[
+        {
+          title: "Español para Principiantes",
+          level: "Básico",
+          lessons: 3,
+          rating: 4.9,
+          hours: 18,
+          reviews: 1240,
+          image: foto1,
+        },
+        {
+          title: "Español Intermedio",
+          level: "Intermedio",
+          lessons: 56,
+          hours: 18,
+          rating: 4.8,
+          reviews: 980,
+          price: "€69.99",
+          image: "/placeholder.svg?height=200&width=400&text=Español+Intermedio",
+        },
+        {
+          title: "Español de Negocios",
+          level: "Avanzado",
+          lessons: 38,
+          hours: 15,
+          rating: 4.9,
+          reviews: 750,
+          price: "€79.99",
+          image: "/placeholder.svg?height=200&width=400&text=Español+Negocios",
+        },
+      ].map((course, index) => (
+        <Card
+        key={index}
+        className="border-2 border-purple-500 dark:border-white shadow-lg overflow-hidden bg-white dark:bg-slate-950 rounded-2xl"
+      >
+        <div className="relative">
+          <Image
+            src={course.image}
+            alt={course.title}
+            width={400}
+            height={200}
+            className="w-full h-48 object-cover rounded-t-2xl"
+          />
+          <Badge className="absolute top-4 left-4 bg-white/90 text-violet-800 hover:bg-white/90 dark:bg-slate-900/90 dark:text-violet-300">
+            {course.level}
+          </Badge>
+        </div>
+      
+        <CardContent className="p-6">
+          <div className="flex justify-between items-start mb-3">
+            <h3 className="text-lg sm:text-xl font-bold">{course.title}</h3>
+            <div className="text-base sm:text-lg font-bold text-violet-600">
+              {course.price}
             </div>
           </div>
-        </section>
+      
+          <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-400 mb-4">
+            <div className="flex items-center gap-1">
+              <BookOpen className="size-4" />
+              <span>{course.lessons} lecciones</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Users className="size-4" />
+              <span>{course.hours} horas</span>
+            </div>
+          </div>
+      
+          <div className="flex items-center gap-2 mb-4">
+            <div className="flex">
+              {[...Array(5)].map((_, i) => (
+                <Star
+                  key={i}
+                  className={`size-4 ${
+                    i < Math.floor(course.rating)
+                      ? "text-yellow-400 fill-yellow-400"
+                      : "text-slate-300"
+                  }`}
+                />
+              ))}
+            </div>
+            <span className="text-sm font-medium">{course.rating}</span>
+            <span className="text-sm text-slate-600 dark:text-slate-400">
+              ({course.reviews})
+            </span>
+          </div>
+      <Link href="/register">
+          <Button className="w-full rounded-full bg-violet-600 hover:bg-violet-700">
+            Inscribirse
+          </Button>
+          </Link>
+        </CardContent>
+      </Card>
+      
+      ))}
+    </div>
+  </div>
+</section>
+
 
         {/* Testimonials */}
         <section
@@ -347,19 +348,19 @@ export default function Home() {
                   name: "María González",
                   country: "Estados Unidos",
                   text: "Después de 3 meses con EspañolPro, pude mantener conversaciones fluidas durante mi viaje a España. Los profesores son increíbles y el método realmente funciona.",
-                  avatar: "/placeholder.svg?height=80&width=80&text=MG",
+                  avatar: avatar1,
                 },
                 {
                   name: "John Smith",
                   country: "Reino Unido",
                   text: "La plataforma es muy intuitiva y los cursos están muy bien estructurados. He probado muchas apps para aprender español, pero esta es sin duda la mejor.",
-                  avatar: "/placeholder.svg?height=80&width=80&text=JS",
+                  avatar:avatar2,
                 },
                 {
                   name: "Akira Tanaka",
                   country: "Japón",
                   text: "Los profesores nativos hacen toda la diferencia. Puedo entender diferentes acentos y expresiones coloquiales que no aprendería en un libro de texto.",
-                  avatar: "/placeholder.svg?height=80&width=80&text=AT",
+                  avatar:avatar3,
                 },
               ].map((testimonial, index) => (
                 <Card
@@ -369,11 +370,11 @@ export default function Home() {
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4 mb-4">
                       <Image
-                        src={testimonial.avatar || "/placeholder.svg"}
+                        src={testimonial.avatar }
                         alt={testimonial.name}
                         width={48}
                         height={48}
-                        className="rounded-full"
+                        className="rounded-full w-12 h-12 object-cover"
                       />
                       <div>
                         <h4 className="font-bold">{testimonial.name}</h4>
@@ -427,7 +428,7 @@ export default function Home() {
                     asChild
                     variant="outline"
                     size="lg"
-                    className="rounded-full h-12 px-6 sm:px-8 border-white text-white hover:bg-white/10"
+                    className="rounded-full h-12 px-6 sm:px-8 border-white text-violet-600 dark:text-white "
                   >
                     <Link href="#cursos">Explorar Cursos</Link>
                   </Button>
@@ -441,153 +442,9 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-12">
         <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
-          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h3 className="font-bold mb-4">EspañolPro</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-slate-600 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
-                  >
-                    Sobre Nosotros
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-slate-600 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
-                  >
-                    Nuestro Equipo
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-slate-600 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
-                  >
-                    Carreras
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-slate-600 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
-                  >
-                    Contacto
-                  </Link>
-                </li>
-              </ul>
-            </div>
+      
 
-            <div>
-              <h3 className="font-bold mb-4">Cursos</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-slate-600 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
-                  >
-                    Principiantes
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-slate-600 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
-                  >
-                    Intermedio
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-slate-600 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
-                  >
-                    Avanzado
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-slate-600 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
-                  >
-                    Negocios
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-bold mb-4">Recursos</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-slate-600 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
-                  >
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-slate-600 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
-                  >
-                    Podcast
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-slate-600 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
-                  >
-                    Guías Gratuitas
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-slate-600 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
-                  >
-                    Eventos
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-bold mb-4">Legal</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-slate-600 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
-                  >
-                    Términos de Servicio
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-slate-600 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
-                  >
-                    Política de Privacidad
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-sm text-slate-600 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
-                  >
-                    Cookies
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <div className="  pt-8 flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center gap-2 mb-4 md:mb-0">
               <Languages className="h-5 w-5 text-violet-600" />
               <span className="font-bold">EspañolPro</span>
